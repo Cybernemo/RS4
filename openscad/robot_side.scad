@@ -4,7 +4,9 @@ thickness = 3;
 height = 160;
 width = 70;
 radius = width/2;
+motor_cache_side = 60;
 motor_side = 44;//Slightly bigger (normal 43.2)
+motor_hole_offset = (motor_cache_side - motor_side)/2;
 M3_radius = 1.7;//Slightly bigger (normal 1.5)
 cache_hole_distance = 48;
 pos_y_motor_extract = height-30;
@@ -66,6 +68,12 @@ difference(){
     roundExtract(width/2 - stepper_screw_distance/2, 160+stepper_screw_distance/2,M3_radius);
     roundExtract(width/2 - stepper_screw_distance/2, 160-stepper_screw_distance/2,M3_radius);
 	
+	//Hole for the screws for the motor plate
+    	//Holes for cache's screws
+	roundExtract(width/2, height - motor_cache_side/2 + motor_hole_offset/2, M3_radius);	
+    roundExtract(width/2, height + motor_cache_side/2 - motor_hole_offset/2, M3_radius);	
+    roundExtract(motor_hole_offset, 160, M3_radius);
+    roundExtract(2*motor_hole_offset + motor_side, 160, M3_radius);
 	
 
 	//Holes for plates
